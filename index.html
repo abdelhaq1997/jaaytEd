@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جعايط للتربية والتعليم</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* لون خلفية فاتح جداً */
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* Custom styles for tables */
+        .didactic-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            overflow: hidden; /* Ensures rounded corners apply to content */
+        }
+        .didactic-table th, .didactic-table td {
+            border: 1px solid #fbd38d; /* لون حدود برتقالي فاتح */
+            padding: 0.75rem 1rem;
+            text-align: right;
+        }
+        .didactic-table th {
+            background-color: #f97316; /* برتقالي داكن */
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .didactic-table tr:nth-child(even) {
+            background-color: #fff7ed; /* برتقالي فاتح جداً */
+        }
+        .didactic-table td {
+            background-color: #ffffff; /* خلفية بيضاء للخلايا الفردية */
+        }
+        .section-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .section-title {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 800; /* font-extrabold */
+            color: #ea580c; /* orange-700 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            border-bottom: 2px solid #fdba74; /* orange-300 */
+            padding-bottom: 0.5rem; /* pb-2 */
+        }
+        .sub-section-title {
+            font-size: 1.75rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            color: #f97316; /* orange-600 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .card-item {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid #fbd38d;
+        }
+        .card-title {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            color: #ea580c; /* orange-700 */
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        /* Mobile Menu Styles */
+        #mobile-menu {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            #mobile-menu {
+                display: none; /* Hidden by default, toggled by JS */
+                background-color: #f97316;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                margin-top: 0.5rem;
+            }
+            #mobile-menu.active {
+                display: block;
+            }
+            #menu-btn {
+                display: block;
+                color: white;
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-orange-600 to-orange-800 text-white p-4 shadow-lg rounded-b-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold">جعايط للتربية والتعليم</a>
+            <nav>
+                <ul class="hidden md:flex space-x-4">
+                    <li><a href="#home" class="hover:text-orange-200 transition duration-300">الرئيسية</a></li>
+                    <li><a href="#level4" class="hover:text-orange-200 transition duration-300">المستوى الرابع</a></li>
+                    <li><a href="#level5" class="hover:text-orange-200 transition duration-300">المستوى الخامس</a></li>
+                    <li><a href="#level6" class="hover:text-orange-200 transition duration-300">المستوى السادس</a></li>
+                    <li><a href="#tips" class="hover:text-orange-200 transition duration-300">نصائح</a></li>
+                    <li><a href="#resources" class="hover:text-orange-200 transition duration-300">الموارد</a></li>
+                    <li><a href="#review-methods" class="hover:text-orange-200 transition duration-300">طرق المراجعة</a></li>
+                    <li><a href="#teaching-methods" class="hover:text-orange-200 transition duration-300">طرق التدريس</a></li>
+                    <li><a href="#contact-us" class="hover:text-orange-200 transition duration-300">اتصل بنا</a></li>
+                </ul>
+                <!-- زر القائمة للأجهزة المحمولة -->
+                <button id="menu-btn" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </nav>
+        </div>
+        <!-- القائمة المنسدلة للأجهزة المحمولة -->
+        <div id="mobile-menu" class="md:hidden">
+            <ul class="flex flex-col space-y-2 mt-4 text-white">
+                <li><a href="#home" class="block px-4 py-2 hover:bg-orange-700 rounded-md">الرئيسية</a></li>
+                <li><a href="#level4" class="block px-4 py-2 hover:bg-orange-700 rounded-md">المستوى الرابع</a></li>
+                <li><a href="#level5" class="block px-4 py-2 hover:bg-orange-700 rounded-md">المستوى الخامس</a></li>
+                <li><a href="#level6" class="block px-4 py-2 hover:bg-orange-700 rounded-md">المستوى السادس</a></li>
+                <li><a href="#tips" class="block px-4 py-2 hover:bg-orange-700 rounded-md">نصائح</a></li>
+                <li><a href="#resources" class="block px-4 py-2 hover:bg-orange-700 rounded-md">الموارد</a></li>
+                <li><a href="#review-methods" class="block px-4 py-2 hover:bg-orange-700 rounded-md">طرق المراجعة</a></li>
+                <li><a href="#teaching-methods" class="block px-4 py-2 hover:bg-orange-700 rounded-md">طرق التدريس</a></li>
+                <li><a href="#contact-us" class="block px-4 py-2 hover:bg-orange-700 rounded-md">اتصل بنا</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto p-6 md:p-8">
+        <!-- القسم الرئيسي / الصفحة الرئيسية -->
+        <section id="home" class="section-card">
+            <h2 class="section-title">مرحباً بكم في جعايط للتربية والتعليم</h2>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                "جعايط للتربية والتعليم" هو موقع تعليمي مخصص لمراجعة المنهاج الدراسي لمادة اللغة العربية للمستويات الابتدائية (الرابع، الخامس، السادس). نوفر موارد تعليمية، نصائح فعالة، وطرق تدريس مبتكرة تساعد الطلاب على تحقيق أفضل أداء أكاديمي.
+            </p>
+            <p class="text-gray-700 text-lg leading-relaxed">
+                يهدف هذا الموقع إلى أن يكون مرجعاً شاملاً للأساتذة والمتعلمين على حد سواء، ليساهم في تعزيز العملية التعليمية وتحقيق الأهداف التربوية المنشودة وفق منهاج يوليوز 2021.
+            </p>
+        </section>
+
+        <!-- المستوى الرابع ابتدائي -->
+        <section id="level4" class="section-card">
+            <h2 class="section-title">ديداكتيك اللغة العربية - المستوى الرابع</h2>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                في نهاية السنة الرابعة من التعليم الابتدائي، يكون المتعلم(ة) قادراً على حل وضعيات مشكلة و/أو إنجاز مهمات مركبة من خلال:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 text-lg mb-4 space-y-2">
+                <li>فهم نصوص مقروءة تتراوح كلماتها ما بين 250 و 300 كلمة.</li>
+                <li>فهم نصوص مسموعة تتراوح كلماتها ما بين 200 و 250 كلمة.</li>
+                <li>إنتاج نصوص شفهية (حوالي 45 كلمة) وكتابية (حوالي 35 كلمة) يغلب عليها طابع السرد، الإخبار، الوصف، التوجيه، التفسير، والحجاج.</li>
+                <li>توظيف رصيده المعرفي والمعجمي والقيمي، وما اكتسبه من بنيات لغوية بطريقة صريحة.</li>
+            </ul>
+
+            <h3 class="sub-section-title">مكونات برنامج اللغة العربية في المستوى الرابع</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-item">
+                    <h3 class="card-title">1. القراءة</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>أنواع النصوص:</strong> الوظيفية، الشعرية، المسترسلة.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>الأهداف:</strong> قراءة بطلاقة، إثراء المعجم، استخراج المعلومات، تحليل النصوص، إبداء الرأي.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">2. التواصل الشفهي</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>المكونات:</strong> نص سماعي.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>الأهداف:</strong> فهم المسموع، إعادة الإنتاج الشفهي، التحاور، طلب معلومات وإرشادات.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">3. الظواهر اللغوية</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>العناصر:</strong> الصرف والتحويل، التراكيب، الإملاء.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>الأهداف:</strong> تعرف الظواهر، استثمار القواعد، تحسين الأداء التواصلي.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">4. الكتابة</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>العناصر:</strong> التطبيقات الكتابية، التعبير الكتابي.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>الأهداف:</strong> مهارات التحرير الإنشائي (تعليق، تلخيص، توسيع، تحويل).
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">5. مشروع الوحدة</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>الأهداف:</strong> تشجيع البحث، تعميق الفهم، تنمية مهارات التخطيط والتعاون.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="sub-section-title mt-8">المجالات الدراسية للمستوى الرابع (الوحدات)</h3>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                يتكون برنامج اللغة العربية للمستوى الرابع من ست وحدات، تتمحور كل وحدة حول مجال من المجالات الدراسية التالية:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 text-lg mb-4 space-y-2">
+                <li>**الوحدة 1:** الحضارة المغربية.</li>
+                <li>**الوحدة 2:** الحياة الثقافية والفنية.</li>
+                <li>**الوحدة 3:** الهوايات.</li>
+                <li>**الوحدة 4:** الفلاحة والصناعة والتجارة.</li>
+                <li>**الوحدة 5:** الغابة.</li>
+                <li>**الوحدة 6:** السياحة.</li>
+            </ul>
+
+            <h3 class="sub-section-title mt-8">الغلاف الزمني الأسبوعي للمادة</h3>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                الغلاف الزمني المخصص للغة العربية في المستوى الرابع هو **6 ساعات ونصف أسبوعياً (390 دقيقة)**.
+            </p>
+            <table class="didactic-table">
+                <thead>
+                    <tr>
+                        <th>المكون</th>
+                        <th>الغلاف الزمني الأسبوعي</th>
+                        <th>تفصيل الحصص</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>القراءة</td><td>120 دقيقة</td><td>4 حصص × 30 دقيقة</td></tr>
+                    <tr><td>التواصل الشفهي</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>الصرف والتحويل</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>التراكيب</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>الإملاء</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>الشكل والتطبيقات الكتابية</td><td>45 دقيقة</td><td>1 حصة × 45 دقيقة</td></tr>
+                    <tr><td>التعبير الكتابي</td><td>45 دقيقة</td><td>1 حصة × 45 دقيقة</td></tr>
+                    <tr><td>مشروع الوحدة</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td class="font-bold">**المجموع الكلي**</td><td class="font-bold">**390 دقيقة**</td><td class="font-bold">**(6 ساعات ونصف)**</td></tr>
+                </tbody>
+            </table>
+             <p class="text-gray-700 text-lg leading-relaxed mt-4">
+                للاطلاع على تفصيل المحاور والمواضيع الديداكتيكية لكل وحدة للمستوى الرابع، يرجى الرجوع إلى وثيقة المنهاج الدراسي (يوليوز 2021) الصفحات من 314 إلى 317.
+            </p>
+        </section>
+
+        <!-- المستوى الخامس ابتدائي -->
+        <section id="level5" class="section-card">
+            <h2 class="section-title">ديداكتيك اللغة العربية - المستوى الخامس</h2>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                في نهاية السنة الخامسة من التعليم الابتدائي، يكون المتعلم(ة) قادراً على حل وضعيات مشكلة و/أو إنجاز مهمات مركبة من خلال:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 text-lg mb-4 space-y-2">
+                <li>فهم وتحليل وتركيب وتقويم نصوص مقروءة تتراوح كلماتها ما بين 300 و 350 كلمة.</li>
+                <li>فهم نصوص مسموعة تتراوح كلماتها ما بين 250 و 280 كلمة.</li>
+                <li>إنتاج نصوص شفهية (حوالي 60 كلمة) وكتابية (حوالي 50 كلمة) يغلب عليها طابع السرد، الإخبار، الوصف، التوجيه، التفسير، والحجاج.</li>
+                <li>توظيف رصيده المعرفي والمعجمي والقيمي، وما اكتسبه من بنيات لغوية بطريقة صريحة.</li>
+            </ul>
+
+            <h3 class="sub-section-title">مكونات برنامج اللغة العربية في المستوى الخامس</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-item">
+                    <h3 class="card-title">1. القراءة</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>أنواع النصوص:</strong> الوظيفية، الشعرية، المسترسلة.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>الأهداف:</strong> اكتساب آليات التعامل مع النصوص، توظيف استراتيجيات الفهم، استخراج الحجج، إبداء الرأي.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">2. التواصل الشفهي</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>المكونات:</strong> نص سماعي.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>الأهداف:</strong> فهم المسموع، إعادة الإنتاج الشفهي، التواصل بأسلوب استدلالي.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">3. الظواهر اللغوية</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>العناصر:</strong> الصرف والتحويل، التراكيب، الإملاء.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>الأهداف:</strong> تعرف الظواهر، استثمار القواعد، تحسين الأداء.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">4. الكتابة</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>العناصر:</strong> الشكل والتطبيقات الكتابية، التعبير الكتابي.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>الأهداف:</strong> ترجمة الأفكار كتابياً، استحضار المكتسبات، توظيف الأساليب المناسبة.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">5. مشروع الوحدة</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>الأهداف:</strong> تشجيع البحث، تعميق الفهم، تنمية مهارات التخطيط والتعاون.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="sub-section-title mt-8">المجالات الدراسية للمستوى الخامس (الوحدات)</h3>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                يتكون برنامج اللغة العربية للمستوى الخامس من ست وحدات، تتمحور كل وحدة حول مجال من المجالات الدراسية التالية:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 text-lg mb-4 space-y-2">
+                <li>**الوحدة 1:** مغاربة العالم.</li>
+                <li>**الوحدة 2:** الواجبات والحقوق.</li>
+                <li>**الوحدة 3:** وسائل الاتصال والتواصل.</li>
+                <li>**الوحدة 4:** الابتكارات والاختراعات.</li>
+                <li>**الوحدة 5:** عالم البحار والفضاء.</li>
+                <li>**الوحدة 6:** الألعاب والرياضة.</li>
+            </ul>
+
+            <h3 class="sub-section-title mt-8">الغلاف الزمني الأسبوعي للمادة</h3>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                الغلاف الزمني المخصص للغة العربية في المستوى الخامس هو **6 ساعات أسبوعياً (360 دقيقة)**.
+            </p>
+            <table class="didactic-table">
+                <thead>
+                    <tr>
+                        <th>المكون</th>
+                        <th>الغلاف الزمني الأسبوعي</th>
+                        <th>تفصيل الحصص</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>القراءة</td><td>90 دقيقة</td><td>3 حصص × 30 دقيقة</td></tr>
+                    <tr><td>التواصل الشفهي</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>الصرف والتحويل</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>التراكيب</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>الإملاء</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>الشكل والتطبيقات الكتابية</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>التعبير الكتابي</td><td>60 دقيقة</td><td>2 حصص × 30 دقيقة</td></tr>
+                    <tr><td>مشروع الوحدة</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td class="font-bold">**المجموع الكلي**</td><td class="font-bold">**360 دقيقة**</td><td class="font-bold">**(6 ساعات)**</td></tr>
+                </tbody>
+            </table>
+            <p class="text-gray-700 text-lg leading-relaxed mt-4">
+                للاطلاع على تفصيل المحاور والمواضيع الديداكتيكية لكل وحدة للمستوى الخامس، يرجى الرجوع إلى وثيقة المنهاج الدراسي (يوليوز 2021) الصفحات من 320 إلى 324.
+            </p>
+        </section>
+
+        <!-- المستوى السادس ابتدائي -->
+        <section id="level6" class="section-card">
+            <h2 class="section-title">ديداكتيك اللغة العربية - المستوى السادس</h2>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                في نهاية السنة السادسة من التعليم الابتدائي، يكون المتعلم(ة) قادراً على حل وضعيات مشكلة و/أو إنجاز مهمات مركبة من خلال:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 text-lg mb-4 space-y-2">
+                <li>فهم وتحليل وتركيب وتقويم نصوص مقروءة تتراوح كلماتها ما بين 350 و 400 كلمة.</li>
+                <li>فهم نصوص مسموعة تتراوح كلماتها ما بين 280 و 300 كلمة.</li>
+                <li>إنتاج نصوص شفهية (حوالي 70 كلمة) وكتابية (حوالي 60 كلمة) يغلب عليها طابع السرد، الإخبار، الوصف، التوجيه، التفسير، والحجاج.</li>
+                <li>توظيف رصيده المعرفي والمعجمي والقيمي، وما اكتسبه من بنيات لغوية بطريقة صريحة.</li>
+            </ul>
+
+            <h3 class="sub-section-title">مكونات برنامج اللغة العربية في المستوى السادس</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-item">
+                    <h3 class="card-title">1. القراءة</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>أنواع النصوص:</strong> النصوص الوظيفية، النصوص الشعرية، النصوص المسترسلة.
+                    </p>
+                    <p class="text-gray-600 mb-2">
+                        <strong>الأهداف:</strong> اكتساب آليات التعامل مع النصوص، توظيف استراتيجيات الفهم القرائي (ما قبل القراءة، أثناء القراءة، ما بعد القراءة) لبناء المعنى، استخراج الحجج المدعمة لأفكار النص، إبداء الرأي في المقروء وتدعيمه بحجج مناسبة، اكتساب قيم إيجابية والتعود على المطالعة الحرة، تحليل وتركيب ونقد وتأويل وإبداع النصوص.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>توجيهات:</strong> يركز على الطلاقة في القراءة، استثمار استراتيجيات المفردات (خريطة الكلمة، عائلة الكلمة، شبكة المفردات، المعاني المتعددة، مفاتيح السياق، القاموس)، تحليل عناصر النصوص، الكشف عن القيم والاتجاهات، وتنمية مهارات الإنشاد والتذوق الفني للأشعار.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">2. التواصل الشفهي</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>المكونات:</strong> نص سماعي واحد كل أسبوعين.
+                    </p>
+                    <p class="text-gray-600 mb-2">
+                        <strong>الأهداف:</strong> فهم وتحليل ومناقشة واستثمار المسموع، إعادة الإنتاج الشفهي (النسج على غرار أساليب النص، التوسع في مواقف النص، إنتاج نص جديد، تشخيص مواقف النص)، التواصل شفهياً باستعمال رصيد معجمي وظيفي حسب سياقات تواصلية، استعمال أسلوب استدلالي للدفاع عن وجهة النظر أو فكرة معينة، توظيف الحجاج باستعمال الدلائل والبراهين، التحاور مع الرفاق بلغة عربية فصيحة، طلب معلومات وإرشادات بلغة عربية فصيحة وميسرة.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>توجيهات:</strong> فسح المجال للتحدث عبر تنظيم موائد مستديرة، عروض، لعب أدوار، مناظرات، وعروض أفلام قصيرة.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">3. الظواهر اللغوية</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>العناصر:</strong> الصرف والتحويل، التراكيب، الإملاء.
+                    </p>
+                    <p class="text-gray-600 mb-2">
+                        <strong>الأهداف:</strong> تعرف الظواهر الصرفية والتركيبية والإملائية المقررة، استثمار القواعد اللغوية أثناء الإنجازين الشفهي والكتابي، تحسين الأداء التواصلي شفهياً وكتابياً، توظيف اللغة العربية توظيفاً سليماً في الإنتاجات الشفهية والكتابية.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>توجيهات:</strong> التصريح بالظواهر اللغوية والقواعد الضابطة لاستعمالها، مع التركيز على الوظيفية وتجنب الإغراق في التفريع والاستثناءات اللغوية المعقدة. النص القرائي الوظيفي كمنطلق لدروس الظواهر اللغوية.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">4. الكتابة</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>العناصر:</strong> الشكل والتطبيقات الكتابية، التعبير الكتابي.
+                    </p>
+                    <p class="text-gray-600 mb-2">
+                        <strong>الأهداف:</strong> ترجمة الأفكار والتعبير عنها كتابياً بحرية وإبداع، استحضار التعلمات والمكتسبات السابقة واستثمارها، توظيف الأسلوب المناسب (حكي، سرد، حوار...)، وضع تصميم للموضوع وإبراز عناصره، تنظيم المنتج واستعمال علامات الترقيم، إدراج الاستشهادات المناسبة، التمرن على مهارات الكتابة الوظيفية والإبداعية (تعليق، تلخيص، توسيع، تحويل، تعبير حر أو موجه).
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>توجيهات:</strong> العناية بسلامة اللغة ووضوح المضامين في التحرير الإنشائي، مع التدريب والتقويم المستمر.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3 class="card-title">5. مشروع الوحدة</h3>
+                    <p class="text-gray-600 mb-2">
+                        <strong>الأهداف:</strong> تشجيع المتعلم على البحث والاتصال بمصادر المعلومات المختلفة، تعميق الفهم حول الموضوعات المرتبطة بالمجالات المدروسة، تنمية القدرة على الاختيار والتخطيط وجمع المعلومات وتنظيمها واستثمارها، إذكاء الحس التعاوني وروح الانتماء والمبادرة والمسؤولية، تنمية مهارات التفكير النقدي والابتكار والتواصل والتعاون.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>مراحله:</strong> تحديد المشروع والتخطيط له، إنجازه، عرضه.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="sub-section-title mt-8">المجالات الدراسية للمستوى السادس (الوحدات)</h3>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                يتكون برنامج اللغة العربية للمستوى السادس من ست وحدات، تتمحور كل وحدة حول مجال من المجالات الدراسية التالية:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 text-lg mb-4 space-y-2">
+                <li>**الوحدة 1:** حضارات كونية.</li>
+                <li>**الوحدة 2:** المواطنة والسلوك المدني.</li>
+                <li>**الوحدة 3:** العلم والتكنولوجيا.</li>
+                <li>**الوحدة 4:** الطاقة في حياتنا.</li>
+                <li>**الوحدة 5:** تحديات العالم المعاصر.</li>
+                <li>**الوحدة 6:** إبداعات وفنون.</li>
+            </ul>
+
+            <h3 class="sub-section-title mt-8">الغلاف الزمني الأسبوعي للمادة</h3>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                الغلاف الزمني المخصص للغة العربية في المستوى السادس هو **6 ساعات أسبوعياً (360 دقيقة)**.
+            </p>
+            <table class="didactic-table">
+                <thead>
+                    <tr>
+                        <th>المكون</th>
+                        <th>الغلاف الزمني الأسبوعي</th>
+                        <th>تفصيل الحصص</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>القراءة</td><td>90 دقيقة</td><td>3 حصص × 30 دقيقة</td></tr>
+                    <tr><td>التواصل الشفهي</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>الصرف والتحويل</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>التراكيب</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>الإملاء</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>الشكل والتطبيقات الكتابية</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td>التعبير الكتابي</td><td>60 دقيقة</td><td>2 حصص × 30 دقيقة</td></tr>
+                    <tr><td>مشروع الوحدة</td><td>30 دقيقة</td><td>1 حصة × 30 دقيقة</td></tr>
+                    <tr><td class="font-bold">**المجموع الكلي**</td><td class="font-bold">**360 دقيقة**</td><td class="font-bold">**(6 ساعات)**</td></tr>
+                </tbody>
+            </table>
+            <p class="text-gray-700 text-lg leading-relaxed mt-4">
+                للاطلاع على تفصيل المحاور والمواضيع الديداكتيكية لكل وحدة للمستوى السادس، يرجى الرجوع إلى وثيقة المنهاج الدراسي (يوليوز 2021) الصفحات من 327 إلى 331.
+            </p>
+        </section>
+
+        <!-- نصائح للاستعداد للامتحانات -->
+        <section id="tips" class="section-card">
+            <h2 class="section-title">نصائح للاستعداد الجيد لامتحان التعليم الابتدائي</h2>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                لتحقيق أفضل النتائج في امتحان التعليم الابتدائي، يُنصح باتباع الخطوات التالية:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 text-lg mb-4 space-y-2">
+                <li><strong>فهم المنهاج:</strong> اطلع جيداً على المنهاج الدراسي (يوليوز 2021) لفهم الأهداف والكفايات المطلوبة لكل مادة ومستوى.</li>
+                <li><strong>التخطيط للمراجعة:</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>ضع جدولاً زمنياً للمراجعة يغطي جميع المواد، مع تخصيص وقت أكبر للمواد التي تجد فيها صعوبة.</li>
+                        <li>قسم المواد إلى وحدات صغيرة قابلة للمراجعة اليومية.</li>
+                    </ul>
+                </li>
+                <li><strong>المراجعة النشطة:</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>لا تكتفِ بالقراءة السلبية، بل حاول تلخيص المعلومات، رسم خرائط ذهنية، وشرح المفاهيم بصوت عالٍ.</li>
+                        <li>حل التمارين والأنشطة التطبيقية بانتظام.</li>
+                        <li>راجع الأخطاء التي ترتكبها وحاول فهم سببها لتجنب تكرارها.</li>
+                    </ul>
+                </li>
+                <li><strong>الامتحانات التجريبية:</strong> حل نماذج امتحانات سابقة للتعود على صيغة الأسئلة وإدارة الوقت.</li>
+                <li><strong>الراحة والتغذية:</strong> احرص على أخذ قسط كافٍ من النوم وتناول غذاء صحي ومتوازن، فالعقل السليم في الجسم السليم.</li>
+                <li><strong>الجانب النفسي:</strong> حافظ على معنوياتك مرتفعة، وتجنب التوتر والقلق المفرط. ثق بقدراتك.</li>
+            </ul>
+        </section>
+
+        <!-- الموارد التعليمية -->
+        <section id="resources" class="section-card">
+            <h2 class="section-title">الموارد اللازمة للاستعداد</h2>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                لضمان مراجعة شاملة وفعالة، يمكن الاستعانة بالموارد التالية:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 text-lg mb-4 space-y-2">
+                <li><strong>الكتب المدرسية:</strong> هي المصدر الأساسي للمعلومات، وتأكد من استخدام النسخ المعتمدة وفق منهاج 2021.</li>
+                <li><strong>دلائل الأستاذ:</strong> توفر توجيهات ديداكتيكية قيمة، وأهدافاً تفصيلية، وأنشطة مقترحة لكل درس.</li>
+                <li><strong>النماذج الامتحانية السابقة:</strong> متوفرة على مواقع وزارة التربية الوطنية أو في المجموعات التعليمية.</li>
+                <li><strong>المنصات الرقمية التعليمية:</strong> مثل منصة "تلميذ تيس" (TelmidTice) التي توفر دروساً وفيديوهات رقمية.</li>
+                <li><strong>المكتبات المدرسية والعامة:</strong> للاطلاع على القصص، المجلات التعليمية، والمراجع الإضافية.</li>
+                <li><strong>مواقع الويب التعليمية:</strong> التي تقدم تمارين تفاعلية، ملخصات، وشروحات للمفاهيم.</li>
+                <li><strong>دفتر التقَصّي:</strong> (خاص بمادة النشاط العلمي) لتسجيل الملاحظات والفرضيات والنتائج.</li>
+                <li><strong>العدة البيداغوجية التكميلية:</strong> المتوفرة على موقع الوزارة، والتي تتضمن أنشطة وتمارين إضافية.</li>
+            </ul>
+        </section>
+
+        <!-- طرق المراجعة الفعالة -->
+        <section id="review-methods" class="section-card">
+            <h2 class="section-title">طرق المراجعة الفعالة</h2>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                إلى جانب النصائح العامة، إليك بعض طرق المراجعة التي أثبتت فعاليتها:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 text-lg mb-4 space-y-2">
+                <li><strong>طريقة بومودورو (Pomodoro Technique):</strong> تقسيم وقت المراجعة إلى فترات قصيرة (مثلاً 25 دقيقة) من التركيز العميق، تليها استراحة قصيرة (5 دقائق)، ثم استراحة أطول بعد عدة فترات.</li>
+                <li><strong>الخرائط الذهنية (Mind Maps):</strong> تنظيم المعلومات والمفاهيم الرئيسية بشكل بصري باستخدام الألوان والرسومات والكلمات المفتاحية.</li>
+                <li><strong>الشرح للآخرين:</strong> محاولة شرح المفاهيم التي راجعتها لشخص آخر (صديق، فرد من العائلة) أو حتى لنفسك بصوت عالٍ. هذا يساعد على ترسيخ الفهم واكتشاف الثغرات في معرفتك.</li>
+                <li><strong>حل المشكلات والتمارين:</strong> التطبيق العملي هو مفتاح الفهم العميق. لا تكتفِ بقراءة الحلول، بل حاول حل التمارين بنفسك.</li>
+                <li><strong>المراجعة المتباعدة (Spaced Repetition):</strong> مراجعة المعلومات على فترات زمنية متباعدة بدلاً من الحفظ المكثف في فترة قصيرة. هذا يعزز الذاكرة طويلة المدى.</li>
+            </ul>
+        </section>
+
+        <!-- طرق التدريس والبيداغوجيات -->
+        <section id="teaching-methods" class="section-card">
+            <h2 class="section-title">طرق التدريس والبيداغوجيات المستعملة في التعليم بالمغرب</h2>
+            <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                يعتمد النظام التربوي المغربي، وفق منهاج 2021، على مقاربات بيداغوجية حديثة ومتكاملة تهدف إلى تكوين متعلم متوازن وقادر على التكيف مع تحديات العصر. من أبرز هذه الطرق والبيداغوجيات:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 text-lg mb-4 space-y-2">
+                <li><strong>المقاربة بالكفايات (Approche par compétences):</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>تركز على تمكين المتعلم من توظيف معارفه ومهاراته وقيمه لحل وضعيات مشكلة وإنجاز مهمات مركبة ذات دلالة وظيفية في حياته ومجتمعه.</li>
+                        <li>تنتقل بالتعليم من منطق التلقين والشحن إلى منطق التعلم الذاتي والقدرة على الحوار والتفاعل الخلاق.</li>
+                    </ul>
+                </li>
+                <li><strong>التربية على الاختيار (Éducation au choix):</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>تهدف إلى تأهيل المتعلم لاكتساب القدرة على التمييز وإبداء الرأي واتخاذ القرار الواعي والتصرف السليم.</li>
+                    </ul>
+                </li>
+                <li><strong>التربية على القيم (Éducation aux valeurs):</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>ترسيخ قيم العقيدة الإسلامية، الهوية الحضارية، المواطنة، وحقوق الإنسان الكونية.</li>
+                        <li>تدمج هذه القيم في جميع المواد والأنشطة الدراسية.</li>
+                    </ul>
+                </li>
+                <li><strong>البيداغوجيا الفارقية (Pédagogie différenciée):</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>تأخذ بعين الاعتبار الفروقات الفردية بين المتعلمين (السن، القدرات، السلوك، الإيقاعات) وتكيف طرق التدريس والوسائل التعليمية لتناسب الجميع.</li>
+                    </ul>
+                </li>
+                <li><strong>بيداغوجيا المشروع (Pédagogie de projet):</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>تعتمد على إنجاز مشاريع تعليمية (فردية أو جماعية) تتيح للمتعلم التعلم بالممارسة، وتطبيق المعارف في سياقات حقيقية.</li>
+                        <li>تعزز روح المبادرة والتعاون والتفكير النقدي.</li>
+                    </ul>
+                </li>
+                <li><strong>بيداغوجيا اللعب (Pédagogie du jeu):</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>استخدام الألعاب التعليمية كوسيلة لتقديم الأنشطة التعليمية بشكل جذاب ومحفز، مما يعزز المتعة والنشاط والتعبير عن الذات.</li>
+                    </ul>
+                </li>
+                <li><strong>بيداغوجيا الخطأ (Pédagogie de l'erreur):</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>تعتبر الخطأ نقطة انطلاق للتعلم، حيث يتم تحليله وتصحيحه لفهم أعمق وتجنب تكراره.</li>
+                    </ul>
+                </li>
+                <li><strong>التفويض التدريجي للمسؤولية (Dévolution progressive de la responsabilité):</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>ينتقل المعلم تدريجياً من تقديم النماذج والشرح إلى توجيه المتعلم، ثم تركه يمارس المهارة بشكل مستقل، ليعزز بذلك اكتسابه للمهارات وتحمله للمسؤولية.</li>
+                    </ul>
+                </li>
+                <li><strong>التناوب اللغوي (Alternance linguistique):</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>استخدام أكثر من لغة تدريس (العربية والفرنسية، ومعها الأمازيغية والإنجليزية مستقبلاً) لبعض المواد أو الأجزاء منها، بهدف تعزيز التمكن اللغوي والانفتاح الثقافي.</li>
+                    </ul>
+                </li>
+                <li><strong>التعلم المدمج (STEM Approach):</strong>
+                    <ul class="list-circle list-inside mr-4 space-y-1">
+                        <li>دمج مواد العلوم، التكنولوجيا، الهندسة، والرياضيات لتقديم تعليم تكاملي يعتمد على حل المشكلات وتعزيز الابتكار والتفكير النقدي.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact-us" class="bg-gray-800 text-white p-4 text-center rounded-t-lg">
+        <div class="container mx-auto">
+            <p>&copy; 2025 جعايط للتربية والتعليم. جميع الحقوق محفوظة.</p>
+            <p class="text-sm mt-2">مصمم بحب من طرف الأستاذ عبدالحق جعايط. تحية للأستاذ محمد المدن.</p>
+        </div>
+        <section class="section-card bg-gray-100 text-gray-800 mt-4">
+            <h2 class="section-title text-gray-800 border-gray-400">اتصل بنا</h2>
+            <form action="#" method="POST" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-gray-700">الاسم الكامل:</label>
+                    <input type="text" id="name" name="name" required class="w-full border border-gray-300 p-2 rounded">
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-700">البريد الإلكتروني:</label>
+                    <input type="email" id="email" name="email" required class="w-full border border-gray-300 p-2 rounded">
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-700">الرسالة:</label>
+                    <textarea id="message" name="message" rows="5" required class="w-full border border-gray-300 p-2 rounded"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="bg-orange-600 text-white py-2 px-4 rounded hover:bg-orange-700">إرسال</button>
+                </div>
+            </form>
+        </section>
+    </footer>
+
+    <!-- سكريبت تفعيل القائمة القابلة للسحب -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
